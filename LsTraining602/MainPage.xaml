@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:LsTraining602"
+    xmlns:viewModels="clr-namespace:LsTraining602.ViewModels;"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="LsTraining602.MainPage">
+
+    <!--ViewModelのクラスを指定-->
+    <ContentPage.BindingContext>
+        <viewModels:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <!--レイアウト-->
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Button Text="カウントアップ" Command="{Binding CountUpCommand}" />
+        <Label x:Name="lblCountUp" Text="{Binding CurrentNumber}" HorizontalTextAlignment="Center" />
+    </StackLayout>
+
+</ContentPage>
