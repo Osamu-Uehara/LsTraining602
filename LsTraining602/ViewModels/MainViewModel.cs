@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
-using Xamarin.Forms;
+using System.Windows.Input;
+//using Xamarin.Forms;
 using LsTraining602.Models;
 using LsTraining602.BasePages;
+using LsTraining602.Commands;
 
 namespace LsTraining602.ViewModels
 {
@@ -16,7 +18,7 @@ namespace LsTraining602.ViewModels
         /// <summary>
         /// コマンドバインドプロパティ
         /// </summary>
-        public Command CountUpCommand { get; }
+        public ICommand CountUpCommand { get; }
 
         /// <summary>
         /// カウント数値バインドプロパティ
@@ -29,13 +31,18 @@ namespace LsTraining602.ViewModels
         public MainViewModel()
         {
             // コマンド発行時に処理する内容の紐付け
-            CountUpCommand = new Command(() =>
-            {
+            CountUpCommand = new CountUpCommand(Increment);
+        }
+
+        /// <summary>
+        /// カウントアップ処理
+        /// </summary>
+        private void Increment()
+        {
                 // Modelクラスのカウントアップメソッド呼び出し
                 _count.Increment();
                 // UIに変更通知を行う為の指定
                 OnPropertyChanged(nameof(CurrentNumber));
-            });
         }
     }
 }
