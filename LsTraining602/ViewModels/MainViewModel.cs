@@ -2,16 +2,12 @@
 using System.ComponentModel;
 using Xamarin.Forms;
 using LsTraining602.Models;
+using LsTraining602.BasePages;
 
 namespace LsTraining602.ViewModels
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : ViewModelBase
     {
-        /// <summary>
-        /// プロパティの変更があったときに発行される
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
         /// <summary>
         /// カウントモデルのインスタンスを保持
         /// </summary>
@@ -38,7 +34,7 @@ namespace LsTraining602.ViewModels
                 // Modelクラスのカウントアップメソッド呼び出し
                 _count.Increment();
                 // UIに変更通知を行う為の指定
-                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentNumber)));
+                OnPropertyChanged(nameof(CurrentNumber));
             });
         }
     }
